@@ -1,0 +1,24 @@
+Log on to stutil:
+
+ssh -Y -C [user name]@us.navo.hpc.mil
+
+Note: you need the "-Y" and "-C" for X11 window forwarding so that you can actually use the MATLAB desktop interface.
+
+once on stutil, get an interactive job.  From the command line:
+
+qsub -A USNAM37752431 -q parallel -I -V -l select=1:ncpus=16:mpiprocs=16:ngpus=1 -l walltime=1:00:00 
+
+Once the job has started, verify that there are MATLAB licenses available:
+
+from the command line:
+SLB_all_avail.pl matlab
+
+If at least 2 are available, add the matlab R2016a module:
+
+from the command line:
+module load matlab/R2016a
+
+launch matlab from the command line:
+matlab &
+
+have fun!
